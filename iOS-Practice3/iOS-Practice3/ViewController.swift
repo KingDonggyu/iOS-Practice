@@ -64,10 +64,50 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return cell
     }
     
+    
+    // 클릭시 화면 이동 방법1 - tableView delegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // 클릭
-        print("Click: \(indexPath.row)")
+        // 클릭 -> 화면 이동 (이동하기 전에 값을 미리 setting)
+        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+        let newsDetail = storyboard.instantiateViewController(withIdentifier: "NewsDetailController") as! NewsDetailController
+        
+        if let news = newsData {
+            if let row = news[indexPath.row] as? Dictionary<String, Any> {
+                if let title = row["title"] as? String {
+                    newsDetail.head = title
+                }
+                if let imgUrl = row["urlToImage"] as? String {
+                    newsDetail.imageUrl = imgUrl
+                }
+                if let desc = row["description"] as? String {
+                    newsDetail.desc = desc
+                }
+            }
+        }
+        
+        // 수동 이동
+        show(newsDetail, sender: nil)
     }
+    
+    // 클릭시 화면 이동 방법2 - storyboard(segue 사용)
+    //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    //        if let id = segue.identifier, id == "NewsDetail" {
+    //            if let controller = segue.destination as? NewsDetailController {
+    //                if let news = newsData {
+    //                    if let indexPath = TableViewMain.indexPathForSelectedRow {
+    //                        if let row = news[indexPath.row] as? Dictionary<String, Any> {
+    //                            if let imgUrl = row["urlToImage"] as? String {
+    //                                controller.imageUrl = imgUrl
+    //                            }
+    //                            if let desc = row["description"] as? String {
+    //                                controller.desc = desc
+    //                            }
+    //                        }
+    //                    }
+    //                }
+    //            }
+    //        }
+    //    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,7 +116,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         TableViewMain.dataSource = self
         TableViewMain.delegate = self
         
+        self.title = "오늘의 뉴스"
         getNews()
     }
 }
-
