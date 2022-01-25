@@ -106,13 +106,146 @@
                     <view key="view" contentMode="scaleToFill" id="h8Y-qQ-4tg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="g93-WX-ir4">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="LGw-SD-MQE">
+                                    <size key="itemSize" width="207" height="197"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PictureCell" id="dHa-ZC-nL6" customClass="PictureCell" customModule="Album" customModuleProvider="target">
+                                        <rect key="frame" x="103.5" y="0.0" width="207" height="197"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="1XH-g2-1Kd">
+                                            <rect key="frame" x="0.0" y="0.0" width="207" height="197"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rBx-jO-4KX">
+                                                    <rect key="frame" x="0.0" y="0.0" width="207" height="197"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="rBx-jO-4KX" firstAttribute="top" secondItem="1XH-g2-1Kd" secondAttribute="top" id="1ng-V7-G1M"/>
+                                                <constraint firstAttribute="bottom" secondItem="rBx-jO-4KX" secondAttribute="bottom" id="4Ml-if-zi3"/>
+                                                <constraint firstAttribute="trailing" secondItem="rBx-jO-4KX" secondAttribute="trailing" id="NNg-Gd-M24"/>
+                                                <constraint firstItem="rBx-jO-4KX" firstAttribute="leading" secondItem="1XH-g2-1Kd" secondAttribute="leading" id="z2Q-mI-r9o"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="207" height="197"/>
+                                        <connections>
+                                            <outlet property="pictureImageView" destination="rBx-jO-4KX" id="Qqh-Gl-bVX"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DDm-4Y-7Wn">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <items>
+                                    <barButtonItem title="Item" image="square.and.arrow.up" catalog="system" id="CmR-X4-6o1">
+                                        <connections>
+                                            <action selector="touchUpShareButtonItem:" destination="DLS-RE-Z03" id="hOh-Iz-RKN"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="XaI-5N-aHm"/>
+                                    <barButtonItem title="최신순" id="LyC-uG-7ND">
+                                        <connections>
+                                            <action selector="touchUpSortButtonItem:" destination="DLS-RE-Z03" id="Vm0-IT-9Xw"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="iQk-5L-fzD"/>
+                                    <barButtonItem title="Item" image="trash" catalog="system" id="cls-Rm-buq">
+                                        <connections>
+                                            <action selector="touchUpTrashButtonItem:" destination="DLS-RE-Z03" id="EeH-Pe-lq5"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="cL6-14-RHz"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="cL6-14-RHz" firstAttribute="trailing" secondItem="g93-WX-ir4" secondAttribute="trailing" id="Nmq-hK-und"/>
+                            <constraint firstItem="DDm-4Y-7Wn" firstAttribute="trailing" secondItem="cL6-14-RHz" secondAttribute="trailing" id="R5y-5z-jL0"/>
+                            <constraint firstItem="g93-WX-ir4" firstAttribute="top" secondItem="cL6-14-RHz" secondAttribute="top" id="Z9I-Al-JHq"/>
+                            <constraint firstItem="cL6-14-RHz" firstAttribute="bottom" secondItem="DDm-4Y-7Wn" secondAttribute="bottom" id="ey8-Pv-WsW"/>
+                            <constraint firstItem="DDm-4Y-7Wn" firstAttribute="leading" secondItem="cL6-14-RHz" secondAttribute="leading" id="g9Q-Kx-EOv"/>
+                            <constraint firstItem="cL6-14-RHz" firstAttribute="bottom" secondItem="g93-WX-ir4" secondAttribute="bottom" id="jvr-uP-tfp"/>
+                            <constraint firstItem="g93-WX-ir4" firstAttribute="leading" secondItem="cL6-14-RHz" secondAttribute="leading" id="nLS-JZ-NKc"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="pictureCollectionView" destination="g93-WX-ir4" id="YSm-H1-K4j"/>
+                        <outlet property="shareButtonItem" destination="CmR-X4-6o1" id="Om0-MV-BCL"/>
+                        <outlet property="sortButtonItem" destination="LyC-uG-7ND" id="H9z-Qz-l4v"/>
+                        <outlet property="trashButtonItem" destination="cls-Rm-buq" id="6O3-w9-hb6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kJj-lb-kca" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2335" y="74"/>
+            <point key="canvasLocation" x="2334.7826086956525" y="73.660714285714278"/>
+        </scene>
+        <!--Picture Detail View Controller-->
+        <scene sceneID="Kv5-us-4vW">
+            <objects>
+                <viewController storyboardIdentifier="PictureDetailViewController" id="HK6-N4-Qsb" customClass="PictureDetailViewController" customModule="Album" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qkB-q6-TxY">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Vjh-dI-3uR">
+                                <rect key="frame" x="57" y="298" width="300" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="Swa-82-rjv"/>
+                                    <constraint firstAttribute="height" constant="300" id="bp9-Wd-PLk"/>
+                                </constraints>
+                            </imageView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="du2-Vf-SjV">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <items>
+                                    <barButtonItem title="Item" image="square.and.arrow.up" catalog="system" id="TEK-ka-07B">
+                                        <connections>
+                                            <action selector="touchUpShareButtonItem:" destination="HK6-N4-Qsb" id="c6t-gL-34i"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Vnn-p3-y1k"/>
+                                    <barButtonItem title="Item" image="heart" catalog="system" id="YyS-IQ-s75">
+                                        <connections>
+                                            <action selector="touchUpFavoriteButtonItem:" destination="HK6-N4-Qsb" id="Wo7-Vo-icY"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="ADX-KK-SpX"/>
+                                    <barButtonItem title="Item" image="trash" catalog="system" id="epN-Qt-D8F">
+                                        <connections>
+                                            <action selector="touchUpTrashButtonItem:" destination="HK6-N4-Qsb" id="E7H-wl-HVW"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="qN8-J9-bNV"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="du2-Vf-SjV" firstAttribute="trailing" secondItem="qN8-J9-bNV" secondAttribute="trailing" id="A7r-pL-mpr"/>
+                            <constraint firstItem="du2-Vf-SjV" firstAttribute="bottom" secondItem="qN8-J9-bNV" secondAttribute="bottom" id="RG5-WJ-mcz"/>
+                            <constraint firstItem="du2-Vf-SjV" firstAttribute="leading" secondItem="qN8-J9-bNV" secondAttribute="leading" id="q46-TD-ZdW"/>
+                            <constraint firstItem="Vjh-dI-3uR" firstAttribute="centerY" secondItem="qkB-q6-TxY" secondAttribute="centerY" id="quw-Uf-Olz"/>
+                            <constraint firstItem="Vjh-dI-3uR" firstAttribute="centerX" secondItem="qkB-q6-TxY" secondAttribute="centerX" id="ufL-o7-CTc"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="favoriteButtonItem" destination="YyS-IQ-s75" id="PRC-8S-Zub"/>
+                        <outlet property="pictureImageView" destination="Vjh-dI-3uR" id="ktX-rQ-8zW"/>
+                        <outlet property="shareButtonItem" destination="TEK-ka-07B" id="irK-5c-PKd"/>
+                        <outlet property="trashButtinItem" destination="epN-Qt-D8F" id="hgc-Ir-kNj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CBD-LN-oOA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3242" y="74"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zUN-JW-IVC">
@@ -134,7 +267,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="heart" catalog="system" width="128" height="109"/>
+        <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
         <image name="square.on.square" catalog="system" width="128" height="113"/>
+        <image name="trash" catalog="system" width="121" height="128"/>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

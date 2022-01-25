@@ -132,9 +132,7 @@ class AlbumListViewController: UIViewController {
         navBar.isTranslucent = false
         navBar.backgroundColor = .systemBackground
     
-        let navItem = UINavigationItem(title: "앨범")
-        navBar.items = [navItem]
-        
+        self.navigationItem.title = "앨범"
         self.view.addSubview(navBar)
     }
     
@@ -154,7 +152,7 @@ class AlbumListViewController: UIViewController {
 extension AlbumListViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.albumModel.count
+        return self.fetchResult.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -169,8 +167,8 @@ extension AlbumListViewController: UICollectionViewDataSource, UICollectionViewD
             self.imageManager.requestImage(for: asset, targetSize: CGSize(width: 300, height: 300), contentMode: .aspectFill, options: nil, resultHandler: { image, _ in cell.albumImageView?.image = image})
         }
         
-        cell.albumTitleLabel.text = albumModel[indexPath.item].name
-        cell.albumCountLabel.text = String(fetchResult[indexPath.item].count)
+        cell.albumTitleLabel.text = self.albumModel[indexPath.item].name
+        cell.albumCountLabel.text = String(self.fetchResult[indexPath.item].count)
         
         return cell
     }
@@ -196,7 +194,7 @@ extension AlbumListViewController: PHPhotoLibraryChangeObserver {
     func photoLibraryDidChange(_ changeInstance: PHChange) {
         for i in 0..<albumModel.count {
             if let changes = changeInstance.changeDetails(for: self.fetchResult[i]) {
-                fetchResult[i] = changes.fetchResultAfterChanges
+                self.fetchResult[i] = changes.fetchResultAfterChanges
                 
                 OperationQueue.main.addOperation {
                     self.albumCollectionView.reloadSections(IndexSet(0...0))
