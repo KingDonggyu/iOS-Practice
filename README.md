@@ -31,3 +31,15 @@
   - Photos
 
   - OperationQueue
+
+- **BoxOffice** : 박스 오피스 정보 제공 앱
+
+  - TableView / CollectionView
+
+  - ScrollView
+
+  - Grand Central Dispatch
+
+  - Networking (URLSession)
+
+  - Notification
